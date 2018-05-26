@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="lazyLoadingEnabled" value="true" />
+		<setting name="aggressiveLazyLoading" value="true" />
+	</settings>
+
+	<plugins>
+		<!-- 分页助手 -->
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!-- 该参数默认为false -->
+			<!-- 设置为true时，使用RowBounds分页会进行count查询 -->
+			<property name="rowBoundsWithCount" value="true" />
+		</plugin>
+	</plugins>
+
+	<mappers>
+		<mapper resource="mybatis/mapper/categoryMapper.xml" />
+		<mapper resource="mybatis/mapper/secondCategoryMapper.xml" />
+		<mapper resource="mybatis/mapper/productMapper.xml" />
+		<mapper resource="mybatis/mapper/orderMapper.xml" />
+	</mappers>
+	
+	
+</configuration>

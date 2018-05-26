@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peiqi.manager.mapper.ProductMapper">
+	<select id="findAllProduct" resultType="com.peiqi.commons.pojo.pruduct.Product">
+		SELECT * FROM product
+	</select>
+	
+	<select id="findHotAll" resultType="com.peiqi.commons.pojo.pruduct.Product">
+		SELECT * FROM product WHERE is_hot = 1 LIMIT 0,10
+	</select>
+	
+	<select id="findNewAll" resultType="com.peiqi.commons.pojo.pruduct.Product">
+		SELECT * FROM product ORDER BY pdate DESC LIMIT 0,10
+	</select>
+	
+	<select id="findProductByCid" resultType="com.peiqi.commons.pojo.pruduct.Product">
+		SELECT p.* FROM product p, categorysecond cs WHERE p.csid = cs.csid AND cs.cid = #{cid}
+	</select>	
+	
+	<select id="findProductByCsid" resultType="com.peiqi.commons.pojo.pruduct.Product">
+		SELECT * FROM product WHERE csid = #{csid}
+	</select>
+	
+	<select id="findProductByPid" resultType="com.peiqi.commons.pojo.pruduct.Product">
+		SELECT * FROM product WHERE pid = #{pid}
+	</select>
+	
+</mapper>

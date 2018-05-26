@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peiqi.manager.mapper.OrderMapper">
+
+	<select id="findAllOrder" resultType="com.peiqi.commons.pojo.order.Order">
+		SELECT * FROM orders
+	</select>
+	
+	<select id="findOrderByState" resultType="com.peiqi.commons.pojo.order.Order">
+		SELECT * FROM orders WHERE state = #{state} 
+	</select>
+	
+	<update id="updateState">
+		update orders set state = 3 where oid = #{oid}
+	</update>
+	
+	<insert id="saveOrder">
+		INSERT INTO orders (oid,name,state,total,ordertime,uid) VALUES (#{oid},#{name},#{state},#{total},#{ordertime},#{uid})
+	</insert>
+	
+	<insert id="saveOrderItem">
+		INSERT INTO orderitem (count,subtotal,oid,pid) VALUES (#{count},#{subtotal},#{order.oid},#{product.pid})	
+	</insert>
+	
+	<select id="queryOrderById" resultType="com.peiqi.commons.pojo.order.Order">
+		SELECT * FROM orders WHERE oid = #{oid} 
+	</select>
+	
+	<update id="updateOrder">
+		UPDATE orders SET addr = #{addr},name = #{name},phone = #{phone},state = 2 WHERE oid = #{oid}
+	</update>
+	
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peiqi.manager.mapper.SecondCategoryMapper">
+	
+	<select id="findAllSecondCategory" resultType="com.peiqi.commons.pojo.category.CategorySecond">
+		SELECT * FROM categorysecond
+	</select>
+
+	<select id="findSecondCategoryByCsid" resultType="com.peiqi.commons.pojo.category.CategorySecond">
+		SELECT * FROM categorysecond WHERE csid = #{csid} 
+	</select>
+	
+	<update id="updateSecondCategory">
+		UPDATE categorysecond SET cid = #{cid}, csname = #{csname} WHERE csid = #{csid}
+	</update>
+	
+	<delete id="deleteSecondCategory">
+		DELETE FROM categorysecond WHERE csid = #{csid}
+	</delete>
+	
+	<select id="findByCid" resultType="com.peiqi.commons.pojo.category.CategorySecond">
+		SELECT * FROM categorysecond WHERE cid = #{cid}
+	</select>
+</mapper>
